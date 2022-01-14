@@ -7,7 +7,7 @@ RED='\033[1;31m'
 GRE='\033[1;32m'
 BOLD=$(tput bold)
 
-declare -a colors=("aqua" "blue" "crimson" "chartreuse" "darkgoldenrod1" "darkorchid1" "deeppink" "gray1" "gray24")
+declare -a colors=("aqua" "blue" "crimson" "chartreuse" "darkgoldenrod1" "darkorchid1" "deeppink" "gray1" "gray24" "aquamarine3" "chocolate4" "fuchsia" "darkgreen" "darkorange" "cyan4")
 
 nbElem=$(grep -o , $1 | wc -l)   
 let nbElem=nbElem+1
