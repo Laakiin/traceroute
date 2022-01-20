@@ -30,7 +30,7 @@ fi
 mkdir $2
 mkdir $2/.tmp
 touch $2/dotFile
-echo "digraph {" >> $2/dotFile
+echo "digraph routes {" >> $2/dotFile
 color=0
 if [[ -n $1 ]]
 then
@@ -63,9 +63,20 @@ then
         let "color = color+1"
     done
     echo -e "${YEL}Traceroute finished ${NC}"
+    #echo "}" >> $2/dotFile
+    sudo rm -r $2/.tmp/
+    let "color = 0"
+    #echo "digraph legende {" >> $2/dotFile
+
+    for (( f=1 ; f<=nbElem ; f++ ))
+    do
+        site=$(cut -d',' -f $f $1)
+        echo " \"Caption\" -> \"$site\" -> \"${colors[$color]}\" [color=${colors[$color]} bgcolor=${colors[$color]}];" >> $2/dotFile
+        let "color = color+1"
+    done
+
     echo "}" >> $2/dotFile
     xdot $2/dotFile
-    sudo rm -r $2/.tmp/
     else
         echo -e "${RED}You have to precise the host list(csv file) as the first argument and the file name in which you will save as a second argument${NC}"
     fi
