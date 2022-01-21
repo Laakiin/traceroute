@@ -76,6 +76,7 @@ then
     done
 
     echo "}" >> $2/dotFile
+    dot -Tpng dotFile > routeMap.png
     xdot $2/dotFile
     else
         echo -e "${RED}You have to precise the host list(csv file) as the first argument and the file name in which you will save as a second argument${NC}"
